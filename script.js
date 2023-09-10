@@ -213,13 +213,25 @@ function domLoaded() {
 	}
 }
 
-exitHowToPlay.addEventListener('click', () => {
-	document.querySelector('#how-to-play-container').classList.add('no-hover');
-});
-
 document.querySelector('#how-to-play').addEventListener('mousedown', () => {
-	console.log('hello hover');
-	document.querySelector('#how-to-play-container').classList.remove('no-hover');
+	if (window.matchMedia('(hover: none)').matches) {
+		Array.from(document.querySelector('#how-to-play-container').children).forEach((element) => {
+			element.classList.add('mobile-how-to-play');
+		});
+		document.querySelector('#how-to-play-container').style.display = 'grid';
+	} else {
+		Array.from(document.querySelector('#how-to-play-container').children).forEach((element) => {
+			element.classList.remove('mobile-how-to-play');
+		});
+		document.querySelector('#how-to-play-container').classList.remove('no-hover');
+	}
+});
+exitHowToPlay.addEventListener('click', () => {
+	if (window.matchMedia('(hover: none)').matches) {
+		document.querySelector('#how-to-play-container').style.display = 'none';
+	} else {
+		document.querySelector('#how-to-play-container').classList.add('no-hover');
+	}
 });
 
 exitToStart.addEventListener('click', () => {
