@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<script src="script.js" defer></script>
+		<title>Quiz</title>
+	</head>
+	<body>
+		<div class="quiz-menu-div-container">
+			<div id="how-to-play">
+				<img id="question-mark-icon" src="pictures/question-mark.png" alt="Question Mark Icon" />
+			</div>
+			<div class="leaderboard-button" id="leaderboard-button-menu">
+				<img id="leaderboard-icon" src="pictures/leaderboard.png" alt="Leaderboard Icon" />
+			</div>
+			<div id="how-to-play-container">
+				<div id="exit-how-to-play">X</div>
+				<h1>Rules</h1>
+				<p>
+					You can <b>edit</b> your current profile and <b>make</b> a new one by clicking the
+					<b>profile</b> icon.
+				</p>
+				<p>
+					If you do not select a question <b>category</b> or <b>difficulty</b>, then the questions can be
+					from any category and of any difficulty.
+				</p>
+				<p>
+					You can choose between <b>challenger</b> mode, where you have five seconds to respond to the
+					question, and <b>normal</b> mode, where you have ten seconds.
+				</p>
+				<p>The response is deemed incorrect if the specified <b>time expires</b>.</p>
+				<p>You can only be included in the <b>leaderboard</b> if you have answered 50 questions.</p>
+				<p>Both the home screen and the screen after the quiz have a <b>leaderboard button</b>.</p>
+			</div>
+			<div id="profile-bubble"></div>
+			<div id="profile-bar"></div>
+			<div id="profile-button-div">
+				<button title="Profile" id="profile-button">
+					<img
+						class="profile-picture"
+						src="pictures/default-profile-picture.png"
+						alt="Profile picture"
+					/>
+				</button>
+				<label id="profile-label"></label>
+				<dialog id="profile-dialog">
+					<div class="dialog-div-container">
+						<div id="existing-profile-fields">
+							<label> Select Existing Profile: </label>
+							<div class="select">
+								<select id="existing-profiles">
+									<option value="0">Guest</option>
+								</select>
+							</div>
+
+							<button id="delete-profile" class="profile-buttons button-highlight-color">
+								Delete Profile
+							</button>
+							<dialog id="yes-no-dialog">
+								<div id="yes-no-dialog-container">
+									<button id="delete-profile-yes" class="button-highlight-color">Yes</button>
+									<button id="delete-profile-no" class="button-highlight-color">No</button>
+								</div>
+							</dialog>
+						</div>
+						<div id="new-profile-fields">
+							<label> Nickname: </label>
+							<input type="text" id="nickname" />
+							<label for="nickname" id="nickname-warning"></label>
+							<label> Profile Picture: </label>
+							<input type="file" id="new-profile-picture-file" onchange="previewFile(this);" />
+						</div>
+						<div id="create-edit-profile">
+							<button id="edit-profile" class="profile-buttons button-highlight-color">
+								Edit Profile
+							</button>
+							<button id="create-new-profile" class="profile-buttons button-highlight-color">
+								Create Profile
+							</button>
+						</div>
+						<div class="profile-dialog-buttons-container">
+							<button class="cancel-buttons profile-buttons button-highlight-color">Cancel</button>
+							<button id="save-profile-button" class="profile-buttons button-highlight-color">Save</button>
+						</div>
+					</div>
+				</dialog>
+			</div>
+			<div class="container-for-number-of-questions">
+				<label>Number of Questions</label>
+				<div class="slider-field">
+					<label>0</label>
+					<input type="range" min="0" max="50" value="10" step="1" id="number-of-questions-slider" />
+					<label>50</label>
+				</div>
+				<div class="container-of-buttons-for-number-of-questions">
+					<button id="decrement-button-10" class="slider-buttons button-highlight-color">-10</button>
+					<button id="decrement-button-1" class="slider-buttons button-highlight-color">-</button>
+					<input type="number" min="0" max="50" id="number-of-questions-number" />
+					<button id="increment-button-1" class="slider-buttons button-highlight-color">+</button>
+					<button id="increment-button-10" class="slider-buttons button-highlight-color">+10</button>
+				</div>
+			</div>
+
+			<button id="question-category-button" class="buttons button-highlight-color">
+				Question category
+			</button>
+			<dialog class="dialog-container" id="question-category-dialog">
+				<div class="dialog-div-container">
+					<button class="dialog-buttons question-category button-highlight-color">
+						Arts and Literature
+					</button>
+					<button class="dialog-buttons question-category button-highlight-color">Film and TV</button>
+					<button class="dialog-buttons question-category button-highlight-color">Food and Drink</button>
+					<button class="dialog-buttons question-category button-highlight-color">
+						General Knowledge
+					</button>
+					<button class="dialog-buttons question-category button-highlight-color">Geography</button>
+					<button class="dialog-buttons question-category button-highlight-color">History</button>
+					<button class="dialog-buttons question-category button-highlight-color">Music</button>
+					<button class="dialog-buttons question-category button-highlight-color">Science</button>
+					<button class="dialog-buttons question-category button-highlight-color">
+						Society and Culture
+					</button>
+					<button class="dialog-buttons question-category button-highlight-color">
+						Sport and Leisure
+					</button>
+					<div class="cancel-accept">
+						<button class="cancel-buttons button-highlight-color">Cancel</button>
+						<button id="accept-category" class="accept-buttons button-highlight-color">Accept</button>
+					</div>
+				</div>
+			</dialog>
+			<button id="question-difficulty-button" class="buttons button-highlight-color">
+				Question difficulty
+			</button>
+			<dialog class="dialog-container" id="question-difficulty-dialog">
+				<div class="dialog-div-container">
+					<button class="dialog-buttons question-difficulty button-highlight-color">Easy</button>
+					<button class="dialog-buttons question-difficulty button-highlight-color">Medium</button>
+					<button class="dialog-buttons question-difficulty button-highlight-color">Hard</button>
+					<div class="cancel-accept">
+						<button id="question-difficulty-cancel" class="cancel-buttons button-highlight-color">
+							Cancel
+						</button>
+						<button id="accept-difficulty" class="accept-buttons button-highlight-color">Accept</button>
+					</div>
+				</div>
+			</dialog>
+			<div id="start-button-container">
+				<button id="start-button" class="button-highlight-color"><span>Start</span></button>
+				<button id="start-button-normal-mod" class="button-highlight-color">
+					<span class="start-button-mod-text">Normal</span>
+				</button>
+				<button id="start-button-challenger-mod" class="button-highlight-color">
+					<span class="start-button-mod-text">Challenger</span>
+				</button>
+			</div>
+		</div>
+		<div class="quiz-main-div-container">
+			<div class="counter"></div>
+			<h1 id="question-title">Title</h1>
+			<div class="question-container">
+				<div id="exit-to-start" title="Go Back">&#9664;</div>
+				<div id="current-question" title="Current Question">00/00</div>
+				<div id="current-question-difficulty" title="Question Difficulty">Medium</div>
+
+				<div id="question">
+					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+					the industry's standard dummy text ever since
+				</div>
+			</div>
+			<div class="answers-container">
+				<button id="answer-1" class="buttons-answer button-highlight-color">Answer 1</button>
+				<button id="answer-2" class="buttons-answer button-highlight-color">Answer 2</button>
+				<button id="answer-3" class="buttons-answer button-highlight-color">Answer 3</button>
+				<button id="answer-4" class="buttons-answer button-highlight-color">Answer 4</button>
+			</div>
+		</div>
+		<div class="quiz-end-div-container">
+			<div class="profile-picture-container">
+				<img class="profile-picture" src="pictures/default-profile-picture.png" alt="Profile picture" />
+			</div>
+			<div class="results">
+				<h1>Results</h1>
+				<p id="result-correct-incorrect">Correct Incorrect</p>
+				<h2>Time</h2>
+				<p id="result-time">Time</p>
+			</div>
+			<button id="play-again" class="button-highlight-color">Play Again</button>
+			<button class="leaderboard-button button-highlight-color">Leaderboard</button>
+			<button id="home" class="button-highlight-color">Go Home</button>
+		</div>
+		<div class="quiz-leaderboard-container">
+			<button title="Home" id="home-button">
+				<img id="home-button-img" src="pictures/home.png" alt="Home Icon" />
+			</button>
+			<div id="sort-container">
+				<h1>Leaderboard</h1>
+				<label> Sort by: </label>
+				<div class="select">
+					<select id="sort-values">
+						<option value="0">Percentage of Correct Answers</option>
+						<option value="1">Number of Correct Answers</option>
+						<option value="2">Average Time per Answer</option>
+					</select>
+				</div>
+			</div>
+			<div id="leaderboard-list">
+				<div class="leaderboard-row">
+					<div class="leaderboard-position"><abbr title="Position">#</abbr></div>
+					<div class="leaderboard-nickname">Name</div>
+					<div class="leaderboard-percentage-of-correct-answers">
+						<abbr title="Percentage">%</abbr>
+					</div>
+					<div class="leaderboard-number-of-correct-answers">
+						<abbr title="Correct Answers">✔</abbr>
+					</div>
+					<div class="leaderboard-average-time-per-answer">
+						<abbr title="Average Time">Avg</abbr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
