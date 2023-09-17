@@ -1,16 +1,28 @@
-const openQuestionCategoryDialog = document.querySelector('#question-category-button');
-const questionCategoryDialog = document.querySelector('#question-category-dialog');
+const openQuestionCategoryDialog = document.querySelector(
+	'#question-category-button'
+);
+const questionCategoryDialog = document.querySelector(
+	'#question-category-dialog'
+);
 
-const openQuestionDifficultyDialog = document.querySelector('#question-difficulty-button');
-const questionDifficultyDialog = document.querySelector('#question-difficulty-dialog');
+const openQuestionDifficultyDialog = document.querySelector(
+	'#question-difficulty-button'
+);
+const questionDifficultyDialog = document.querySelector(
+	'#question-difficulty-dialog'
+);
 
 const cancelButton = document.querySelectorAll('.cancel-buttons');
 const acceptButtonCategory = document.querySelector('#accept-category');
 const acceptButtonDifficulty = document.querySelector('#accept-difficulty');
 const dialogElement = document.querySelectorAll('dialog');
 
-const numberOfQuestionsSlider = document.querySelector('#number-of-questions-slider');
-const numberOfQuestionsNumber = document.querySelector('#number-of-questions-number');
+const numberOfQuestionsSlider = document.querySelector(
+	'#number-of-questions-slider'
+);
+const numberOfQuestionsNumber = document.querySelector(
+	'#number-of-questions-number'
+);
 
 const decrementButton10 = document.querySelector('#decrement-button-10');
 const decrementButton1 = document.querySelector('#decrement-button-1');
@@ -19,7 +31,8 @@ const incrementButton1 = document.querySelector('#increment-button-1');
 
 const questionCategory = document.querySelectorAll('.question-category');
 const questionDifficulty = document.querySelectorAll('.question-difficulty');
-const questionCategoryAndDifficulty = document.querySelectorAll('.dialog-buttons');
+const questionCategoryAndDifficulty =
+	document.querySelectorAll('.dialog-buttons');
 const acceptButtons = document.querySelectorAll('.accept-buttons');
 
 const counterText = document.querySelector('.counter');
@@ -56,8 +69,12 @@ const existingProfiles = document.querySelector('#existing-profiles');
 const deleteProfile = document.querySelector('#delete-profile');
 
 const picture = document.querySelectorAll('.profile-picture');
-const newProfilePictureFile = document.querySelector('#new-profile-picture-file');
-const leaderboardContainer = document.querySelector('.quiz-leaderboard-container');
+const newProfilePictureFile = document.querySelector(
+	'#new-profile-picture-file'
+);
+const leaderboardContainer = document.querySelector(
+	'.quiz-leaderboard-container'
+);
 
 const leaderboardList = document.querySelector('#leaderboard-list');
 const leaderboardSortValues = document.querySelector('#sort-values');
@@ -79,9 +96,13 @@ const deleteProfileYes = document.querySelector('#delete-profile-yes');
 const deleteProfileNo = document.querySelector('#delete-profile-no');
 
 const startButtonNormalMod = document.querySelector('#start-button-normal-mod');
-const startButtonChallengerMod = document.querySelector('#start-button-challenger-mod');
+const startButtonChallengerMod = document.querySelector(
+	'#start-button-challenger-mod'
+);
 const exitToStart = document.querySelector('#exit-to-start');
-const currentQuestionDifficulty = document.querySelector('#current-question-difficulty');
+const currentQuestionDifficulty = document.querySelector(
+	'#current-question-difficulty'
+);
 const exitHowToPlay = document.querySelector('#exit-how-to-play');
 const howToPlay = document.querySelector('#how-to-play');
 const questionContainer = document.querySelector('.question-container');
@@ -197,8 +218,12 @@ function domLoaded() {
 	});
 	createLeaderboard();
 	addOptions();
-	highlightButtons(localStorageForSettings[currentUserIndex].userCategorySettings);
-	highlightButtons(localStorageForSettings[currentUserIndex].userDifficultSettings);
+	highlightButtons(
+		localStorageForSettings[currentUserIndex].userCategorySettings
+	);
+	highlightButtons(
+		localStorageForSettings[currentUserIndex].userDifficultSettings
+	);
 	numberOfQuestionsNumber.value = numberOfQuestionsSlider.value =
 		localStorageForSettings[currentUserIndex].userNumberOfQuestions;
 	profileLabel.innerText = localStorageForSettings[currentUserIndex].user;
@@ -215,14 +240,18 @@ function domLoaded() {
 
 document.querySelector('#how-to-play').addEventListener('mousedown', () => {
 	if (window.matchMedia('(hover: none)').matches) {
-		Array.from(document.querySelector('#how-to-play-container').children).forEach((element) => {
-			element.classList.add('mobile-how-to-play');
-		});
+		Array.from(document.querySelector('#how-to-play-container').children).forEach(
+			(element) => {
+				element.classList.add('mobile-how-to-play');
+			}
+		);
 		document.querySelector('#how-to-play-container').style.display = 'grid';
 	} else {
-		Array.from(document.querySelector('#how-to-play-container').children).forEach((element) => {
-			element.classList.remove('mobile-how-to-play');
-		});
+		Array.from(document.querySelector('#how-to-play-container').children).forEach(
+			(element) => {
+				element.classList.remove('mobile-how-to-play');
+			}
+		);
 		document.querySelector('#how-to-play-container').classList.remove('no-hover');
 	}
 });
@@ -271,14 +300,18 @@ deleteProfileNo.addEventListener('click', () => {
 	yesNoDialog.close();
 });
 
-document.querySelector('#leaderboard-button-menu').addEventListener('mouseover', () => {
-	howToPlay.style.transition = '100ms ease-in-out';
-	howToPlay.style.opacity = '0';
-});
-document.querySelector('#leaderboard-button-menu').addEventListener('mouseout', () => {
-	howToPlay.style.transition = '';
-	howToPlay.style.opacity = '';
-});
+document
+	.querySelector('#leaderboard-button-menu')
+	.addEventListener('mouseover', () => {
+		howToPlay.style.transition = '100ms ease-in-out';
+		howToPlay.style.opacity = '0';
+	});
+document
+	.querySelector('#leaderboard-button-menu')
+	.addEventListener('mouseout', () => {
+		howToPlay.style.transition = '';
+		howToPlay.style.opacity = '';
+	});
 
 leaderboardButton.forEach((element) => {
 	element.addEventListener('click', () => {
@@ -286,7 +319,10 @@ leaderboardButton.forEach((element) => {
 			element.classList.add('every-element-opacity-1-0');
 		});
 		Array.from(menuContainer.children).forEach((element) => {
-			if (element.id === 'how-to-play' || element.id === 'leaderboard-button-menu') {
+			if (
+				element.id === 'how-to-play' ||
+				element.id === 'leaderboard-button-menu'
+			) {
 				element.style.display = 'none';
 			} else element.classList.add('every-element-opacity-1-0');
 		});
@@ -314,7 +350,10 @@ leaderboardButton.forEach((element) => {
 					element.classList.remove('every-element-opacity-1-0');
 				});
 				Array.from(menuContainer.children).forEach((element) => {
-					if (element.id === 'how-to-play' || element.id === 'leaderboard-button-menu') {
+					if (
+						element.id === 'how-to-play' ||
+						element.id === 'leaderboard-button-menu'
+					) {
 						element.style.display = 'initial';
 					} else element.classList.remove('every-element-opacity-1-0');
 				});
@@ -426,7 +465,9 @@ editProfile.addEventListener('click', () => {
 	if (newProfileFields.style.display === 'grid') {
 		//button Change
 		if (
-			localStorageForSettings.some((element) => element.user === nickname.value.trim()) &&
+			localStorageForSettings.some(
+				(element) => element.user === nickname.value.trim()
+			) &&
 			localStorageForSettings[currentUserIndex].user !== nickname.value.trim()
 		) {
 			nicknameWarning.innerText = 'Nickname already exist!';
@@ -438,14 +479,19 @@ editProfile.addEventListener('click', () => {
 			localStorage.setItem('user-index', JSON.stringify(currentUserIndex));
 
 			localStorageForSettings[currentUserIndex].user =
-				nickname.value === '' ? localStorageForSettings[currentUserIndex].user : nickname.value;
+				nickname.value === ''
+					? localStorageForSettings[currentUserIndex].user
+					: nickname.value;
 			numberOfQuestionsNumber.value = numberOfQuestionsSlider.value =
 				localStorageForSettings[currentUserIndex].userNumberOfQuestions;
 
-			leaderboardStorage.find((element) => element.name === nickname.placeholder).userProfilePicture =
+			leaderboardStorage.find(
+				(element) => element.name === nickname.placeholder
+			).userProfilePicture =
 				localStorageForSettings[currentUserIndex].userProfilePicture;
-			leaderboardStorage.find((element) => element.name === nickname.placeholder).name =
-				localStorageForSettings[currentUserIndex].user;
+			leaderboardStorage.find(
+				(element) => element.name === nickname.placeholder
+			).name = localStorageForSettings[currentUserIndex].user;
 
 			console.info('after settings: ', localStorageForSettings);
 			console.info('after leaderboard: ', leaderboardStorage);
@@ -477,7 +523,9 @@ createNewProfile.addEventListener('click', () => {
 	if (newProfileFields.style.display === 'grid') {
 		//button Create
 		if (
-			localStorageForSettings.some((element) => element.user === nickname.value.trim()) &&
+			localStorageForSettings.some(
+				(element) => element.user === nickname.value.trim()
+			) &&
 			localStorageForSettings[currentUserIndex].user !== nickname.value.trim()
 		) {
 			nicknameWarning.innerText = 'Nickname already exist!';
@@ -489,13 +537,16 @@ createNewProfile.addEventListener('click', () => {
 			localStorage.setItem('user-index', JSON.stringify(currentUserIndex));
 
 			localStorageForSettings[currentUserIndex].user =
-				nickname.value === '' ? localStorageForSettings[currentUserIndex].user : nickname.value;
+				nickname.value === ''
+					? localStorageForSettings[currentUserIndex].user
+					: nickname.value;
 			numberOfQuestionsNumber.value = numberOfQuestionsSlider.value =
 				localStorageForSettings[currentUserIndex].userNumberOfQuestions;
 
 			leaderboardStorage.push({
 				name: localStorageForSettings[currentUserIndex].user,
-				userProfilePicture: localStorageForSettings[currentUserIndex].userProfilePicture,
+				userProfilePicture:
+					localStorageForSettings[currentUserIndex].userProfilePicture,
 				numberOfAnswers: 0,
 				timeSpent: 0,
 				numberOfAllCorrectAnswers: 0,
@@ -552,7 +603,9 @@ function openProfile() {
 saveProfile.addEventListener('click', () => {
 	if (newProfileFields.style.display === 'grid') {
 		if (
-			localStorageForSettings.some((element) => element.user === nickname.value.trim()) &&
+			localStorageForSettings.some(
+				(element) => element.user === nickname.value.trim()
+			) &&
 			localStorageForSettings[currentUserIndex].user !== nickname.value.trim()
 		) {
 			nicknameWarning.innerText = 'Nickname already exist!';
@@ -577,8 +630,12 @@ function saveCurrentChanges() {
 	createNewProfile.innerText = 'Create Profile';
 	newProfileFields.style.display = 'none';
 	document.querySelector('.select').classList.remove('disabled');
-	highlightButtons(localStorageForSettings[currentUserIndex].userCategorySettings);
-	highlightButtons(localStorageForSettings[currentUserIndex].userDifficultSettings);
+	highlightButtons(
+		localStorageForSettings[currentUserIndex].userCategorySettings
+	);
+	highlightButtons(
+		localStorageForSettings[currentUserIndex].userDifficultSettings
+	);
 	nickname.value = '';
 	profileLabel.innerText = localStorageForSettings[currentUserIndex].user;
 
@@ -587,7 +644,9 @@ function saveCurrentChanges() {
 
 nickname.addEventListener('keydown', (event) => {
 	if (
-		localStorageForSettings.some((element) => element.user === nickname.value.trim()) &&
+		localStorageForSettings.some(
+			(element) => element.user === nickname.value.trim()
+		) &&
 		localStorageForSettings[currentUserIndex].user !== nickname.value.trim()
 	) {
 		nicknameWarning.innerText = 'Nickname already exist!';
@@ -631,7 +690,9 @@ startButton.addEventListener('click', () => {
 					startButtonNormalMod.classList.add('start-button-to-the-left');
 					startButtonChallengerMod.classList.add('start-button-to-the-right');
 
-					startButtonNormalMod.querySelector('span').classList.add('start-button-mod-text-animation');
+					startButtonNormalMod
+						.querySelector('span')
+						.classList.add('start-button-mod-text-animation');
 					startButtonChallengerMod
 						.querySelector('span')
 						.classList.add('start-button-mod-text-animation');
@@ -669,14 +730,19 @@ startButtonNormalMod.addEventListener('animationend', () => {
 		startButtonNormalMod.classList.remove('start-button-to-the-left');
 		startButtonNormalMod.classList.remove('left-button-radius-animation');
 	}
-	if (startButton.style.display === 'none' && startButtonNormalMod.classList.contains('disabled')) {
+	if (
+		startButton.style.display === 'none' &&
+		startButtonNormalMod.classList.contains('disabled')
+	) {
 		startButtonNormalMod.classList.add('left-button-radius-animation');
 		startButtonNormalMod.classList.remove('disabled');
 	}
 });
 
 startButtonChallengerMod.addEventListener('animationend', () => {
-	if (startButtonChallengerMod.classList.contains('right-button-radius-animation')) {
+	if (
+		startButtonChallengerMod.classList.contains('right-button-radius-animation')
+	) {
 		startButtonChallengerMod.classList.remove('start-button-to-the-right');
 		startButtonChallengerMod.classList.remove('right-button-radius-animation');
 	}
@@ -739,8 +805,12 @@ function cancelCurrentChanges() {
 	newProfileFields.style.display = 'none';
 	editProfile.innerText = 'Edit Profile';
 	createNewProfile.innerText = 'Create Profile';
-	highlightButtons(localStorageForSettings[currentUserIndex].userCategorySettings);
-	highlightButtons(localStorageForSettings[currentUserIndex].userDifficultSettings);
+	highlightButtons(
+		localStorageForSettings[currentUserIndex].userCategorySettings
+	);
+	highlightButtons(
+		localStorageForSettings[currentUserIndex].userDifficultSettings
+	);
 	dialogElement.forEach((el) => {
 		el.close();
 	});
@@ -808,8 +878,8 @@ function highlightButtons(highlightedElements) {
 }
 
 function setNumberValueForNumberInput() {
-	localStorageForSettings[currentUserIndex].userNumberOfQuestions = numberOfQuestionsNumber.value =
-		numberOfQuestionsSlider.value;
+	localStorageForSettings[currentUserIndex].userNumberOfQuestions =
+		numberOfQuestionsNumber.value = numberOfQuestionsSlider.value;
 	localStorage.setItem('settings', JSON.stringify(localStorageForSettings));
 	if (localStorageForSettings[currentUserIndex].userNumberOfQuestions === '0') {
 		startButton.classList.add('disabled');
@@ -826,7 +896,9 @@ numberOfQuestionsSlider.addEventListener('input', () => {
 });
 numberOfQuestionsNumber.addEventListener('keydown', (event) => {
 	if (event.key === 'Enter') {
-		numberOfQuestionsSlider.value = Number.isNaN(Number(numberOfQuestionsNumber.value))
+		numberOfQuestionsSlider.value = Number.isNaN(
+			Number(numberOfQuestionsNumber.value)
+		)
 			? 0
 			: numberOfQuestionsNumber.value > 50
 			? 50
@@ -838,7 +910,9 @@ numberOfQuestionsNumber.addEventListener('keydown', (event) => {
 	}
 });
 numberOfQuestionsNumber.addEventListener('blur', (event) => {
-	numberOfQuestionsSlider.value = Number.isNaN(Number(numberOfQuestionsNumber.value))
+	numberOfQuestionsSlider.value = Number.isNaN(
+		Number(numberOfQuestionsNumber.value)
+	)
 		? 0
 		: numberOfQuestionsNumber.value > 50
 		? 50
@@ -860,12 +934,16 @@ decrementButton1.addEventListener('click', () => {
 });
 incrementButton10.addEventListener('click', () => {
 	numberOfQuestionsSlider.value =
-		numberOfQuestionsSlider.value > 50 ? 50 : Number(numberOfQuestionsNumber.value) + 10;
+		numberOfQuestionsSlider.value > 50
+			? 50
+			: Number(numberOfQuestionsNumber.value) + 10;
 	setNumberValueForNumberInput();
 });
 incrementButton1.addEventListener('click', () => {
 	numberOfQuestionsSlider.value =
-		numberOfQuestionsSlider.value > 50 ? 50 : Number(numberOfQuestionsNumber.value) + 1;
+		numberOfQuestionsSlider.value > 50
+			? 50
+			: Number(numberOfQuestionsNumber.value) + 1;
 	setNumberValueForNumberInput();
 });
 
@@ -879,13 +957,16 @@ function reduceCategory() {
 }
 
 function fetchAPILink(numberOfQuestions) {
-	return localStorageForSettings[currentUserIndex].userCategorySettings.length === 0 &&
+	return localStorageForSettings[currentUserIndex].userCategorySettings
+		.length === 0 &&
 		localStorageForSettings[currentUserIndex].userDifficultSettings.length === 0
 		? `https://the-trivia-api.com/api/questions?limit=${numberOfQuestions}`
-		: localStorageForSettings[currentUserIndex].userCategorySettings.length !== 0 &&
+		: localStorageForSettings[currentUserIndex].userCategorySettings.length !==
+				0 &&
 		  localStorageForSettings[currentUserIndex].userDifficultSettings.length === 0
 		? `https://the-trivia-api.com/api/questions?categories=${reduceCategory()}&limit=${numberOfQuestions}`
-		: localStorageForSettings[currentUserIndex].userCategorySettings.length === 0 &&
+		: localStorageForSettings[currentUserIndex].userCategorySettings.length ===
+				0 &&
 		  localStorageForSettings[currentUserIndex].userDifficultSettings.length !== 0
 		? `https://the-trivia-api.com/api/questions?limit=${numberOfQuestions}&difficulty=${localStorageForSettings[
 				currentUserIndex
@@ -908,11 +989,14 @@ async function fetchNewAnswers() {
 		[...dataOne, ...dataTwo].forEach((element) => {
 			let charMaxCountExceeded =
 				element.question.length > 185 ||
-				[element.correctAnswer, ...element.incorrectAnswers].some((charCount) => charCount.length > 75);
+				[element.correctAnswer, ...element.incorrectAnswers].some(
+					(charCount) => charCount.length > 75
+				);
 
 			if (
 				!charMaxCountExceeded &&
-				arrayOfQuestions.length < localStorageForSettings[currentUserIndex].userNumberOfQuestions
+				arrayOfQuestions.length <
+					localStorageForSettings[currentUserIndex].userNumberOfQuestions
 			) {
 				arrayOfQuestions.push({
 					category: element.category,
@@ -949,7 +1033,8 @@ function generateRandomAnswerArray(array) {
 }
 
 function play() {
-	if (localStorageForSettings[currentUserIndex].userNumberOfQuestions === '0') return;
+	if (localStorageForSettings[currentUserIndex].userNumberOfQuestions === '0')
+		return;
 	currentQuestionIndex = 0;
 	numberOfCorrectAnswers = 0;
 	numberOfWrongAnswers = 0;
@@ -1051,7 +1136,10 @@ function endOfTheRound() {
 			});
 		}, 500);
 
-		if (currentQuestionIndex < localStorageForSettings[currentUserIndex].userNumberOfQuestions) {
+		if (
+			currentQuestionIndex <
+			localStorageForSettings[currentUserIndex].userNumberOfQuestions
+		) {
 			setTimeout(() => {
 				intervalCounter();
 				counterText.innerText = timeLimit;
@@ -1076,12 +1164,22 @@ function endOfTheRound() {
 							element.timeSpent += timeTakenToFinish;
 
 							console.log('number of answers: ', element.numberOfAnswers);
-							console.log('number of correct answers: ', element.numberOfAllCorrectAnswers);
+							console.log(
+								'number of correct answers: ',
+								element.numberOfAllCorrectAnswers
+							);
 
 							element.percentageOfCorrectAnswers =
-								Math.round((element.numberOfAllCorrectAnswers / element.numberOfAnswers) * 100 * 100) / 100;
+								Math.round(
+									(element.numberOfAllCorrectAnswers / element.numberOfAnswers) *
+										100 *
+										100
+								) / 100;
 
-							console.log('percentage of correct answers: ', element.percentageOfCorrectAnswers);
+							console.log(
+								'percentage of correct answers: ',
+								element.percentageOfCorrectAnswers
+							);
 
 							element.averageTimePerAnswer =
 								Math.round((element.timeSpent / element.numberOfAnswers) * 100) / 100;
@@ -1190,16 +1288,23 @@ function addLeaderboardRow(user, sortValue) {
 			'class',
 			'leaderboard-percentage-of-correct-answers'
 		);
-		leaderboardPercentageOfCorrectAnswers.innerText = user.percentageOfCorrectAnswers;
+		leaderboardPercentageOfCorrectAnswers.innerText =
+			user.percentageOfCorrectAnswers;
 		leaderboardRow.appendChild(leaderboardPercentageOfCorrectAnswers);
 	} else if (sortValue === '1') {
 		const leaderboardNumberOfCorrectAnswers = document.createElement('div');
-		leaderboardNumberOfCorrectAnswers.setAttribute('class', 'leaderboard-number-of-correct-answers');
+		leaderboardNumberOfCorrectAnswers.setAttribute(
+			'class',
+			'leaderboard-number-of-correct-answers'
+		);
 		leaderboardNumberOfCorrectAnswers.innerText = user.numberOfAllCorrectAnswers;
 		leaderboardRow.appendChild(leaderboardNumberOfCorrectAnswers);
 	} else if (sortValue === '2') {
 		const leaderboardAverageTimePerAnswer = document.createElement('div');
-		leaderboardAverageTimePerAnswer.setAttribute('class', 'leaderboard-average-time-per-answer');
+		leaderboardAverageTimePerAnswer.setAttribute(
+			'class',
+			'leaderboard-average-time-per-answer'
+		);
 		leaderboardAverageTimePerAnswer.innerText = user.averageTimePerAnswer;
 		leaderboardRow.appendChild(leaderboardAverageTimePerAnswer);
 	}
@@ -1275,12 +1380,14 @@ function createLeaderboard() {
 	if (leaderboardSortValues.value === '0') {
 		leaderboardPercentageOfCorrectAnswers.style.display = 'flex';
 		tempArrayForLeaderboard.sort(
-			(a, b) => Number(b.percentageOfCorrectAnswers) - Number(a.percentageOfCorrectAnswers)
+			(a, b) =>
+				Number(b.percentageOfCorrectAnswers) - Number(a.percentageOfCorrectAnswers)
 		);
 	} else if (leaderboardSortValues.value === '1') {
 		leaderboardNumberOfCorrectAnswers.style.display = 'flex';
 		tempArrayForLeaderboard.sort(
-			(a, b) => Number(b.numberOfAllCorrectAnswers) - Number(a.numberOfAllCorrectAnswers)
+			(a, b) =>
+				Number(b.numberOfAllCorrectAnswers) - Number(a.numberOfAllCorrectAnswers)
 		);
 	} else if (leaderboardSortValues.value === '2') {
 		leaderboardAverageTimePerAnswer.style.display = 'flex';
@@ -1294,7 +1401,10 @@ function createLeaderboard() {
 	tempArrayForLeaderboard.forEach((element, index) => {
 		element.index = index + 1;
 
-		if (index + 1 <= 6 && element.name === localStorageForSettings[currentUserIndex].user) {
+		if (
+			index + 1 <= 6 &&
+			element.name === localStorageForSettings[currentUserIndex].user
+		) {
 			tempUserInTop5 = true;
 		}
 	});
@@ -1307,7 +1417,10 @@ function createLeaderboard() {
 		if (tempUserInTop5 && element.index <= 6) {
 			addLeaderboardRow(element, leaderboardSortValues.value);
 		} else {
-			if (element.index <= 6 || element.name === localStorageForSettings[currentUserIndex].user) {
+			if (
+				element.index <= 6 ||
+				element.name === localStorageForSettings[currentUserIndex].user
+			) {
 				if (element.name === localStorageForSettings[currentUserIndex].user) {
 					leaderboardList.removeChild(leaderboardList.lastChild);
 				}
